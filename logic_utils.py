@@ -24,3 +24,12 @@ def check_guess(guess, secret):
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+
+
+def attempts_remaining(attempt_limit: int, attempts_used: int) -> int:
+    """Return how many attempts are left in the game.
+
+    `attempts_used` is 0 for a brand-new game and increases by exactly 1 for
+    each submitted guess, so the first guess must reduce the result by 1.
+    """
+    return attempt_limit - attempts_used
