@@ -1,6 +1,9 @@
 import random
 import streamlit as st
 
+from logic_utils import attempts_remaining
+
+
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
@@ -33,18 +36,20 @@ def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
 
+# FIX: Hint messages were swapped. A guess above the secret is "Too High",
+# so the player must go LOWER (and vice versa).
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Too High", "📉 Go LOWER!"
+        return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -89,11 +94,13 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
+
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
+#FIX: "Changed st.session_state.attempts = 1" to = 0
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -105,11 +112,6 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 st.subheader("Make a guess")
-
-st.info(
-    f"Guess a number between 1 and 100. "
-    f"Attempts left: {attempt_limit - st.session_state.attempts}"
-)
 
 with st.expander("Developer Debug Info"):
     st.write("Secret:", st.session_state.secret)
@@ -144,6 +146,7 @@ if st.session_state.status != "playing":
         st.error("Game over. Start a new game to try again.")
     st.stop()
 
+# FIXME: Logic breaks here - session state computed after reference
 if submit:
     st.session_state.attempts += 1
 
@@ -186,6 +189,14 @@ if submit:
                     f"The secret was {st.session_state.secret}. "
                     f"Score: {st.session_state.score}"
                 )
+
+# Render "Attempts left" AFTER the counter has been incremented, so the
+# current guess (including the very first one) is reflected immediately.
+#FIX: Moved this section of code to the end (after the submit-handling block)
+st.info(
+    f"Guess a number between {low} and {high}. "
+    f"Attempts left: {attempts_remaining(attempt_limit, st.session_state.attempts)}"
+)
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")
