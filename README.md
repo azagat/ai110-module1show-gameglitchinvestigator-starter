@@ -25,19 +25,19 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [X] Describe the game's purpose.
+- [X] Detail which bugs you found.
+- [X] Explain what fixes you applied.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Enter 89
+2. Game says "Go LOWER!" and one less attempt is left
+3. Enter 50
+4. Game says "Go HIGHER!" and one less attempt is left
+5. Game continues until the correct number is guessed or there are no more attempts. 
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
@@ -48,6 +48,17 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 # pytest tests/
 # ========================= X passed in 0.XXs =========================
 ```
+tests/test_game_logic.py::test_winning_guess PASSED                                                                                                [ 11%]
+tests/test_game_logic.py::test_guess_too_high PASSED                                                                                               [ 22%]
+tests/test_game_logic.py::test_guess_too_low PASSED                                                                                                [ 33%]
+tests/test_game_logic.py::test_fresh_game_starts_with_full_attempts PASSED                                                                         [ 44%]
+tests/test_game_logic.py::test_first_guess_is_counted PASSED                                                                                       [ 55%]
+tests/test_game_logic.py::test_too_high_hint_says_go_lower PASSED                                                                                  [ 66%]
+tests/test_game_logic.py::test_too_low_hint_says_go_higher PASSED                                                                                  [ 77%]
+tests/test_game_logic.py::test_correct_guess_returns_win PASSED                                                                                    [ 88%]
+tests/test_game_logic.py::test_hints_against_string_secret_are_not_swapped PASSED                                                                  [100%]
+
+=================================================================== 9 passed in 0.86s ====================================================================
 
 ## 🚀 Stretch Features
 
