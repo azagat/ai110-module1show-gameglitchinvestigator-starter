@@ -5,7 +5,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
-The game looked well 
+<br>The game looked simple and functional from a UI standpoint.
 
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
@@ -27,34 +27,34 @@ Document at least 3 bugs you found. Add rows as needed.
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-I used the Claude Code extension for VS Code. 
+<br>I used the Claude Code extension for VS Code. 
 
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-One AI suggestion that was correct was moving the "attempts left: message to below the attempt increment. I verified it by walking through the logic myself and confirming that it was correct.
+<br>One AI suggestion that was correct was moving the "attempts left: message to below the attempt increment. I verified it by walking through the logic myself and confirming that it was correct.
 
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
-One suggestion that was misleading was, once again, the suggestion to move the "attempts left: message to below the attempt increment. Although this corrected the logistical issue, the entire bar showing the attempts left moved from near the top to the bottom which was a UI consequence that was not noted by the the AI. 
+<br>One suggestion that was misleading was, once again, the suggestion to move the "attempts left: message to below the attempt increment. Although this corrected the logistical issue, the entire bar showing the attempts left moved from near the top to the bottom which was a UI consequence that was not noted by the the AI. 
 
 ---
 
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
-I decided this when the pytest tests (which adequately test for edge cases) pass, as well as testing the app myself using different inputs.
+<br>I decided this when the pytest tests (which adequately test for edge cases) pass, as well as testing the app myself using different inputs.
 
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
-One test that I ran was deliberately going higher or lower than the secret number (accessible through the debug info). From these tests, I found out that the hints ("go higher/lower") were incorrect.
+<br>One test that I ran was deliberately going higher or lower than the secret number (accessible through the debug info). From these tests, I found out that the hints ("go higher/lower") were incorrect.
 
 - Did AI help you design or understand any tests? How?
-Yes, the AI helped me design test cases used in pytest. The AI wrote the test cases and helped to account for edge cases that I originally did not think of. 
+<br>Yes, the AI helped me design test cases used in pytest. The AI wrote the test cases and helped to account for edge cases that I originally did not think of. 
 
 ---
 
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-I learned that Streamlit is a platform that allows you to turn data scripts into interactive web applications. It possesses a "session state" that allows you to save and persist variables across script reruns, which is useful for ensuring select data is kept throughout reruns of the code. 
+<br>I learned that Streamlit is a platform that allows you to turn data scripts into interactive web applications. It possesses a "session state" that allows you to save and persist variables across script reruns, which is useful for ensuring select data is kept throughout reruns of the code. 
 
 
 ---
@@ -62,11 +62,11 @@ I learned that Streamlit is a platform that allows you to turn data scripts into
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-One strategy I will reuse in future labs and projects is the utilization of pytest and the ability of the AI to write test cases for it. Testing your code is important!
+<br>One strategy I will reuse in future labs and projects is the utilization of pytest and the ability of the AI to write test cases for it. Testing your code is important!
 
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
-One thing I would do differently is  commit and push my code more often, as well as utilizing branches in git. I didn't come across any terrible mistakes in this exercise, but it's good practice to have different versions of the code in the event something goes wrong.
+<br>One thing I would do differently is commit and push my code more often, as well as utilizing branches in git. I didn't come across any terrible mistakes in this exercise, but it's good practice to have different versions of the code in the event something goes wrong.
 
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
-This project changed the way I think about AI generated code by making me realize that code generated by AI isn't always accurate and requires verification. 
+<br>This project changed the way I think about AI generated code by making me realize that code generated by AI isn't always accurate and requires verification. 
